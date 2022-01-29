@@ -2,12 +2,47 @@
 import logo from '../../utils/logo.svg';
 import dashBoardIcon from '../../utils/DashBoardIcon.svg';
 import styles from './DashBoard.module.css';
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+
 
 function DashBoard() {
 
-  return (
+  const navigate = useNavigate();
 
+  const [ user, setUser ] = useState({
+    email: "",
+    password: ""
+  });
+
+  function handleChange (event) {
+    const { name, value } = event.target;
+    setUser({
+      ...user,
+      [name]: value
+    });
+  }
+
+  function loginUser (event) {
+
+    event.preventDefault();
+    const { email, password } = user;
+    if( email && password ){
+      axios.post("http://localhost:4040/login", user)
+      .then((res) => {
+        if(res.data.status === 400){
+           alert(res.data.description);
+        } else {
+          navigate('/');
+        }
+      });
+    } else {
+      alert("Invalid input");
+    }
+  }
+
+  return (
     <div className={styles.total}>
 
       <header className={styles.header}>
@@ -34,10 +69,31 @@ function DashBoard() {
             <form className={styles.loginContent}>
 
                 <label className={styles.loginText}>Login to your account</label>
-                <input type="email" placeHolder="Email address" className={styles.loginInput} required/>
-                <input type="password" placeHolder="Password" className={styles.loginInput} required/>
+                <input
+                  type="email"
+                  placeholder="Email address"
+                  name="email"
+                  className={styles.loginInput}
+                  value={user.email}
+                  autoComplete="off"
+                  onChange={ handleChange }
+                  required/>
+                <input
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  className={styles.loginInput}
+                  value={user.password}
+                  autoComplete="off"
+                  onChange={ handleChange }
+                  required/>
 
-                <input type="submit" value="Login / Signup" className={styles.loginButton}/>
+                <input
+                  type="submit"
+                  value="Login / Signup"
+                  className={styles.loginButton}
+                  onClick={ loginUser }/>
+
             </form>
 
 

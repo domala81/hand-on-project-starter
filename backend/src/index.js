@@ -1,22 +1,28 @@
 
 const express = require("express");
-const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const cors = require("cors");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const User = require("./models/user.js");
+const InitiateMongoServer = require("./config/dbServer.js");
 
 dotenv.config();
-
 const app = express();
-
-mongoose
-  .connect(process.env.MONGODB_URL)
-  .then( function () {
-    console.log("Connected to MongoDB database");
-  })
-  .catch( function (err) {
-    console.log("Error connecting to database " + err);
-  });
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 
-app.listen(process.env.PORT, function () {
+// Initiate Mongo Server
+InitiateMongoServer();
+
+
+// Importing Routes
+const authRoute = require("./routes/auth");
+app.use("/login", authRoute);
+
+
+app.listen(process.env.PORT, () => {
   console.log("Backend server started at port :" + process.env.PORT)
 });

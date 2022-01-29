@@ -30,6 +30,18 @@
   cursor: pointer;
 }
 
+.navLinks {
+  display: flex;
+  align-items: centre;
+  justify-content: space-between;
+  width: 28%;
+}
+
+.navLinks p {
+  align-self: center;
+  cursor: pointer;
+}
+
 .body {
   padding: 60px 100px;
   background-color: rgb(247, 248, 250);

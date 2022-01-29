@@ -10,7 +10,7 @@ function App() {
     <Router>
       <Routes>
 
-        <Route index element={<MarketPlace />} />
+        <Route path="/" element={<MarketPlace />} />
         <Route path="/login" element={<DashBoard />} />
 
         </Routes>
