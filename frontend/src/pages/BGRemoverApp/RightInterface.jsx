@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import styles from "./BGRemoverApp.module.css";
 import InsertImageIcon from "../../utils/InsertImageIcon.svg";
+import axios from "axios";
 
 function RightInterface() {
   const fileInputRef = useRef();
@@ -27,6 +28,25 @@ function RightInterface() {
       const reader = new FileReader();
       reader.onloadend = () => {
         setPreview(reader.result);
+        axios
+          .post("http://localhost:4040/api/upload", { image: reader.result })
+          .then((res) => {
+            console.log(res);
+          });
+        // axios
+        //   .post("http://localhost:4040/upload", reader.result)
+        //   .then((res) => {
+        //     if (res.data.status === 200) {
+        //       console.log("Response returned to frontend succesfully");
+        //     }
+        //   });
+        // .then((res) => {
+        //   if (res.data.status === 400) {
+        //     alert(res.data.description);
+        //   } else {
+        //     setPreview(res.data.image);
+        //   }
+        // });
       };
       reader.readAsDataURL(image);
     } else {
