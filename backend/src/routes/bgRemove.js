@@ -23,8 +23,8 @@ router.post("/upload", (req, res) => {
     .then((response) => {
       if (response.status != 200)
         return console.error("Error:", response.status, response.statusText);
-      console.log(response.data);
-      res.json(response.data.data);
+      // console.log(response.data);
+      res.send(response.data.data);
     })
     .catch((error) => {
       return console.error("Request failed:", error);

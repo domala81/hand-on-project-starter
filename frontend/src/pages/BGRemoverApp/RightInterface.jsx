@@ -8,6 +8,7 @@ function RightInterface() {
   const fileInputRef = useRef();
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState("");
+  const [bgRemovedImage, setBgRemovedImage] = useState("");
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*",
     onDrop: (file) => {
@@ -24,35 +25,25 @@ function RightInterface() {
   });
 
   useEffect(() => {
-    if (image) {
+    if (bgRemovedImage) {
+      setPreview("data:image/png;base64," + bgRemovedImage);
+    } else if (image) {
       const reader = new FileReader();
       reader.onloadend = () => {
         setPreview(reader.result);
+        console.log(reader.result);
         axios
           .post("http://localhost:4040/api/upload", { image: reader.result })
           .then((res) => {
-            console.log(res);
+            console.log(res.data.result_b64);
+            setBgRemovedImage(res.data.result_b64);
           });
-        // axios
-        //   .post("http://localhost:4040/upload", reader.result)
-        //   .then((res) => {
-        //     if (res.data.status === 200) {
-        //       console.log("Response returned to frontend succesfully");
-        //     }
-        //   });
-        // .then((res) => {
-        //   if (res.data.status === 400) {
-        //     alert(res.data.description);
-        //   } else {
-        //     setPreview(res.data.image);
-        //   }
-        // });
       };
       reader.readAsDataURL(image);
     } else {
       setPreview(null);
     }
-  }, [image]);
+  }, [image, bgRemovedImage]);
 
   return (
     <div className={styles.insertBoard}>
@@ -69,10 +60,21 @@ function RightInterface() {
                 onClick={(event) => {
                   event.preventDefault();
                   setImage(null);
+                  setBgRemovedImage(null);
                 }}
               >
                 Remove Image
               </button>
+              {bgRemovedImage && (
+                <a
+                  href={`data:image/png;base64,${bgRemovedImage}`}
+                  download={"Image.png"}
+                  className={styles.uploadButton}
+                  style={{ textDecoration: "none" }}
+                >
+                  Download Image
+                </a>
+              )}
             </div>
           ) : (
             <div className={styles.insertContent}>
