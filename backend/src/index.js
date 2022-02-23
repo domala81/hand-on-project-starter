@@ -25,7 +25,10 @@ const authRoute = require("./routes/auth");
 app.use("/login", authRoute);
 
 const bgRemoveRoute = require("./routes/bgRemove");
-app.use("/api", bgRemoveRoute);
+app.use("/bgremover", bgRemoveRoute);
+
+const apiRoute = require("./routes/APIs");
+app.use("/apis", apiRoute);
 
 app.listen(process.env.PORT, () => {
   console.log("Backend server started at port :" + process.env.PORT);

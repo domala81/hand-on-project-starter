@@ -33,7 +33,9 @@ function RightInterface() {
         setPreview(reader.result);
         console.log(reader.result);
         axios
-          .post("http://localhost:4040/api/upload", { image: reader.result })
+          .post("http://localhost:4040/bgremover/upload", {
+            image: reader.result,
+          })
           .then((res) => {
             console.log(res.data.result_b64);
             setBgRemovedImage(res.data.result_b64);
