@@ -1,0 +1,118 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.body {
+  padding: 60px 100px;
+  background-color: rgb(247, 248, 250);
+}
+
+.heading {
+  font-size: 24px;
+  margin: 0 0 40px;
+}
+
+.APIImage {
+  height: 190px;
+}
+
+.APIGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 65px 5px;
+  align-items: center;
+}
+
+.APIbox {
+  padding: 15px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.APIbox:hover {
+  transform: translateY(5px);
+  box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.APIText h3 {
+  margin: 15px 0;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.APIText p {
+  margin: 10px 0 0;
+  font-size: 16px;
+  font-weight: 400;
+  color: #566474;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.buttons {
+  display: flex;
+  margin: 20px 0;
+  justify-content: space-around;
+}
+
+.editButton {
+  background-color: rgb(247, 248, 250);
+  color: black;
+  border-radius: 5px;
+  width: 60%;
+  padding: 12px 10px;
+  border: none;
+}
+
+.editButton:hover {
+  background-color: #142683;
+  color: white;
+}
+
+.deleteButton {
+  background-color: rgb(247, 248, 250);
+  color: black;
+  border-radius: 5px;
+  width: 30%;
+  padding: 12px 10px;
+  border: none;
+}
+
+.deleteButton:hover {
+  background-color: rgb(192, 37, 37);
+  color: white;
+}
+
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: "liga";
+}

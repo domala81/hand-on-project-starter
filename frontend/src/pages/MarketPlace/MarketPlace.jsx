@@ -1,22 +1,19 @@
-
-import styles from './MarketPlace.module.css';
-import React from "react";
+import styles from "./MarketPlace.module.css";
+import React, { useState } from "react";
 import Body from "./Body.jsx";
-import NavBar from "./navBar.jsx";
-
-
+import NavBar from "../../components/navBar/navBar.jsx";
+import Modal from "../../components/newAPIModal/newAPIModal.jsx";
 
 function MarketPlace() {
-
+  const [modal, setModal] = useState(false);
 
   return (
-
     <div className={styles.total}>
+      {modal && <Modal viewModal={setModal} />}
 
-      <NavBar />
+      <NavBar viewModal={setModal} />
 
       <Body />
-
     </div>
   );
 }

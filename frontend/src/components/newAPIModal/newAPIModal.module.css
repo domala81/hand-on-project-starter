@@ -1,0 +1,52 @@
+.modal {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalBG {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: #566474cc;
+}
+
+.modalContainer {
+  position: fixed;
+  background-color: white;
+  padding: 60px 40px;
+  border-radius: 10px;
+}
+
+.modalContainer p {
+  font-size: 24px;
+  padding: 0;
+  margin: 0 0 10px;
+}
+
+.input {
+  display: block;
+  border: 1px solid #ebf0f5;
+  border-radius: 5px;
+  width: 400px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  margin: 30px 0;
+  padding: 10px;
+}
+
+.addAPIButton {
+  background-color: #142683;
+  color: white;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 700;
+  width: 420px;
+  padding: 12px 10px;
+  margin: 30px 0;
+  border: none;
+  cursor: pointer;
+}

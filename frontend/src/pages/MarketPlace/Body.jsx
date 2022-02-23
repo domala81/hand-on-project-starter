@@ -31,7 +31,7 @@ function Body() {
 
       <h2 className={styles.AllAPIs}>All APIs</h2>
 
-      <div className={styles.APIContainer}>
+      <div>
         <main className={styles.APIGrid}>
           <APICard />
           <APICard />
