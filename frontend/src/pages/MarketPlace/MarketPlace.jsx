@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import Body from "./Body.jsx";
 import NavBar from "../../components/navBar/navBar.jsx";
 import Modal from "../../components/newAPIModal/newAPIModal.jsx";
+import PropTypes from "prop-types";
 
-function MarketPlace() {
+function MarketPlace({ apiList }) {
   const [modal, setModal] = useState(false);
 
   return (
@@ -13,9 +14,13 @@ function MarketPlace() {
 
       <NavBar viewModal={setModal} />
 
-      <Body />
+      <Body apiList={apiList} />
     </div>
   );
 }
+
+MarketPlace.propTypes = {
+  apiList: PropTypes.array,
+};
 
 export default MarketPlace;

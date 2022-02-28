@@ -3,7 +3,6 @@ import styles from "./BGRemoverApp.module.css";
 import React from "react";
 import LeftInterface from "./LeftInterface.jsx";
 import RightInterface from "./RightInterface.jsx";
-// import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function BGRemoverApp() {

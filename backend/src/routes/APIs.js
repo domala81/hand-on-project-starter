@@ -1,45 +1,45 @@
 const router = require("express").Router();
 const apiModel = require("../models/APIs.js");
 
-// let isLoggedIn = false;
-
 // Create
 
 // Validity Schema
-// const Joi = require("@hapi/joi");
-
-// const validationSchema = Joi.object({
-//   name: Joi.string().required().min(2),
-//   endPoint: Joi.string().required(),
-//   description: Joi.string().required().min(3),
-// });
+const Joi = require("@hapi/joi");
+const validationSchema = Joi.object({
+  name: Joi.string().required().min(2),
+  endPoint: Joi.string().required(),
+  description: Joi.string().required().min(3),
+});
 
 router.post("/", async (req, res) => {
-  // const { error } = validationSchema.validate(req.body);
+  const { error } = validationSchema.validate(req.body);
 
-  // if (error) {
-  //   return res.send({
-  //     status: 400,
-  //     description: error.details[0].message,
-  //   });
-  // } else {
-  const apiName = req.body.name;
-  const apiEndPoint = req.body.endPoint;
-  const apiDescription = req.body.description;
+  if (error) {
+    return res.send({
+      status: 400,
+      description: error.details[0].message,
+    });
+  } else {
+    const apiName = req.body.name;
+    const apiEndPoint = req.body.endPoint;
+    const apiDescription = req.body.description;
 
-  const api = new apiModel({
-    name: apiName,
-    endPoint: apiEndPoint,
-    description: apiDescription,
-  });
+    const api = new apiModel({
+      name: apiName,
+      endPoint: apiEndPoint,
+      description: apiDescription,
+    });
 
-  try {
-    await api.save();
-    res.send("inserted data");
-  } catch (err) {
-    console.log(err);
+    try {
+      await api.save();
+      res.send({
+        status: 200,
+        description: "API added successfully",
+      });
+    } catch (err) {
+      console.log(err);
+    }
   }
-  // }
 });
 
 // Read

@@ -3,8 +3,9 @@ import styles from "./MarketPlace.module.css";
 import React from "react";
 import APICard from "./APICard.jsx";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
-function Body() {
+function Body({ apiList }) {
   const navigate = useNavigate();
 
   return (
@@ -33,18 +34,25 @@ function Body() {
 
       <div>
         <main className={styles.APIGrid}>
-          <APICard />
-          <APICard />
-          <APICard />
-          <APICard />
-          <APICard />
-          <APICard />
-          <APICard />
-          <APICard />
+          {apiList.map((val, key) => {
+            return (
+              <div key={key}>
+                <APICard
+                  name={val.name}
+                  endPoint={val.endPoint}
+                  description={val.description}
+                />
+              </div>
+            );
+          })}
         </main>
       </div>
     </div>
   );
 }
+
+Body.propTypes = {
+  apiList: PropTypes.array,
+};
 
 export default Body;

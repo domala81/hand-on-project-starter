@@ -79,6 +79,10 @@
   border-radius: 5px;
 }
 
+.APIbox img {
+  height: 190px;
+}
+
 .APIText h3 {
   margin: 15px 0;
   font-size: 22px;

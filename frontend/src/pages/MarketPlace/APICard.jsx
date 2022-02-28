@@ -1,21 +1,24 @@
-
-import BGRemover from '../../utils/BGRemover.svg';
-import styles from './MarketPlace.module.css';
+import AllPurposeImage from "../../utils/APIsImage.svg";
+import styles from "./MarketPlace.module.css";
 import React from "react";
+import PropTypes from "prop-types";
 
-function APICard() {
-
+function APICard({ name, endPoint, description }) {
   return (
-
-    <article className={styles.APIbox}>
-      <img src={BGRemover} alt="BG Remover" />
+    <article className={styles.APIbox} onClick={() => window.open(endPoint)}>
+      <img src={AllPurposeImage} alt="API Image" />
       <div className={styles.APIText}>
-        <h3>Background Remove</h3>
-        <p>The descriptipn of the API in quick brief and we will truncate it here, it is continued  but shows dots after here</p>
+        <h3>{name}</h3>
+        <p>{description}</p>
       </div>
     </article>
-
   );
 }
+
+APICard.propTypes = {
+  name: PropTypes.string,
+  endPoint: PropTypes.string,
+  description: PropTypes.string,
+};
 
 export default APICard;

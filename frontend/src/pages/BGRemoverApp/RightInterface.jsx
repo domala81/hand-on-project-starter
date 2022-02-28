@@ -33,7 +33,8 @@ function RightInterface() {
         setPreview(reader.result);
         console.log(reader.result);
         axios
-          .post("http://localhost:4040/bgremover/upload", {
+          // eslint-disable-next-line no-undef
+          .post(`${process.env.REACT_APP_BACKEND_URL}/upload`, {
             image: reader.result,
           })
           .then((res) => {
