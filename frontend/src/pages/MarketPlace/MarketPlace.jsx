@@ -20,7 +20,7 @@ function MarketPlace({ apiList }) {
 }
 
 MarketPlace.propTypes = {
-  apiList: PropTypes.array,
+  apiList: PropTypes.any,
 };
 
 export default MarketPlace;

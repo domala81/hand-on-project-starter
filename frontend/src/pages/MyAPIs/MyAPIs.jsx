@@ -63,7 +63,7 @@ function MyAPIs({ apiList }) {
 }
 
 MyAPIs.propTypes = {
-  apiList: PropTypes.array,
+  apiList: PropTypes.any,
 };
 
 export default MyAPIs;

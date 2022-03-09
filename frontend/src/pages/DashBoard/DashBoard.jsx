@@ -28,13 +28,16 @@ function DashBoard() {
     // console.log(process.env.REACT_APP_BACKEND_URL);
 
     if (email && password) {
-      axios.post("http://localhost:4040/login", user).then((res) => {
-        if (res.data.status === 400) {
-          alert(res.data.description);
-        } else {
-          navigate("/");
-        }
-      });
+      axios
+        // eslint-disable-next-line no-undef
+        .post(`${process.env.REACT_APP_BACKEND_URL}/login`, user)
+        .then((res) => {
+          if (res.data.status === 400) {
+            alert(res.data.description);
+          } else {
+            navigate("/");
+          }
+        });
     } else {
       alert("Invalid input");
     }

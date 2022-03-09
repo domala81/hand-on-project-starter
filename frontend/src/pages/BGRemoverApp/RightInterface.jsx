@@ -34,7 +34,7 @@ function RightInterface() {
         console.log(reader.result);
         axios
           // eslint-disable-next-line no-undef
-          .post(`${process.env.REACT_APP_BACKEND_URL}/upload`, {
+          .post(`${process.env.REACT_APP_BACKEND_URL}/bgremover/upload`, {
             image: reader.result,
           })
           .then((res) => {
