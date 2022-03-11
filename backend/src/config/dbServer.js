@@ -3,10 +3,13 @@ const mongoose = require("mongoose");
 // connecting to database
 const InitiateMongoServer = () => {
   mongoose
-    .connect(process.env.MONGODB_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    })
+    .connect(
+      "mongodb+srv://domala81:niharajd@cluster0.wbvfx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      },
+    )
     .then(() => {
       console.log("Connected to MongoDB database");
     })
