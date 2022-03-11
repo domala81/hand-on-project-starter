@@ -12,7 +12,7 @@ function App() {
 
   useEffect(() => {
     // eslint-disable-next-line no-undef
-    axios.get(`${process.env.REACT_APP_BACKEND_URL}/apis`).then((res) => {
+    axios.get("https://apis-marketplace.herokuapp.com/apis").then((res) => {
       setApiList(res.data);
     });
   });
