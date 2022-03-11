@@ -21,7 +21,7 @@ function newAPIModal({
   const addToList = () => {
     axios
       // eslint-disable-next-line no-undef
-      .post("https://apis-marketplace.herokuapp.com/apis", {
+      .post(`${process.env.REACT_APP_BACKEND_URL}/apis`, {
         name: name,
         endPoint: endPoint,
         description: description,
@@ -40,7 +40,7 @@ function newAPIModal({
   const editList = (id) => {
     axios
       // eslint-disable-next-line no-undef
-      .put("https://apis-marketplace.herokuapp.com/apis", {
+      .put(`${process.env.REACT_APP_BACKEND_URL}/apis`, {
         id: id,
         name: name,
         endPoint: endPoint,
