@@ -18,7 +18,7 @@ function APICard({
 }) {
   const deleteAPI = (id) => {
     // eslint-disable-next-line no-undef
-    axios.delete(`${process.env.REACT_APP_BACKEND_URL}/apis/${id}`);
+    axios.delete(`https://apis-marketplace.herokuapp.com/apis/${id}`);
   };
 
   return (
@@ -41,9 +41,6 @@ function APICard({
               event.stopPropagation();
               setUpdate(true);
               setUpdateId(id);
-              // setName(name);
-              // setEndPoint(endPoint);
-              // setDescription(description);
               setPrevName(name);
               setPrevEndPoint(endPoint);
               setPrevDescription(description);

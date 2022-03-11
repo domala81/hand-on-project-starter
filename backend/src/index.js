@@ -31,6 +31,6 @@ app.use("/bgremover", bgRemoveRoute);
 const apiRoute = require("./routes/APIs");
 app.use("/apis", apiRoute);
 
-app.listen(process.env.PORT || 3000, () => {
+app.listen(process.env.PORT, () => {
   console.log("Backend server started at port :" + process.env.PORT);
 });

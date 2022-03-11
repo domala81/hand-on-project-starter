@@ -30,7 +30,7 @@ function DashBoard() {
     if (email && password) {
       axios
         // eslint-disable-next-line no-undef
-        .post(`${process.env.REACT_APP_BACKEND_URL}/login`, user)
+        .post("https://apis-marketplace.herokuapp.com/login", user)
         .then((res) => {
           if (res.data.status === 400) {
             alert(res.data.description);
