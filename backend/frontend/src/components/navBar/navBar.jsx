@@ -10,7 +10,7 @@ function navBar({ viewModal }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // eslint-disable-next-line no-undef
-  axios.get(`${process.env.REACT_APP_BACKEND_URL}/login`).then((res) => {
+  axios.get("/login").then((res) => {
     setIsLoggedIn(res.data.loginStatus);
   });
 

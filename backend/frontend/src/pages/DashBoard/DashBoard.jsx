@@ -25,12 +25,10 @@ function DashBoard() {
     event.preventDefault();
     const { email, password } = user;
 
-    // console.log(process.env.REACT_APP_BACKEND_URL);
-
     if (email && password) {
       axios
         // eslint-disable-next-line no-undef
-        .post(`${process.env.REACT_APP_BACKEND_URL}/login`, user)
+        .post("/login", user)
         .then((res) => {
           if (res.data.status === 400) {
             alert(res.data.description);

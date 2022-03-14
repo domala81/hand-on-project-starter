@@ -18,7 +18,7 @@ function APICard({
 }) {
   const deleteAPI = (id) => {
     // eslint-disable-next-line no-undef
-    axios.delete(`${process.env.REACT_APP_BACKEND_URL}/apis/${id}`);
+    axios.delete(`/apis/${id}`);
   };
 
   return (
