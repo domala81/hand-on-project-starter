@@ -16,7 +16,8 @@ app.use(
 );
 app.use(express.json());
 app.use(cors());
-app.use(express.static("public"));
+
+const PORT = process.env.PORT || 4040;
 
 // Initiate Mongo Server
 InitiateMongoServer();
@@ -31,6 +32,10 @@ app.use("/bgremover", bgRemoveRoute);
 const apiRoute = require("./routes/APIs");
 app.use("/apis", apiRoute);
 
+if (process.env.NODE_ENV == "production") {
+  app.use(express.static("frontend/build"));
+}
+
 app.listen(process.env.PORT, () => {
-  console.log("Backend server started at port :" + process.env.PORT);
+  console.log("Backend server started at port :" + PORT);
 });
